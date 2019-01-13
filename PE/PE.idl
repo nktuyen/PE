@@ -1,0 +1,29 @@
+// PE.idl : type library source for PE.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (PE.tlb).
+
+[ uuid(817a57ce-08e8-4177-8f96-ec8c58754b84), version(1.0) ]
+library PE
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for CPEDoc
+
+	[ uuid(dc5e01a7-17d3-4653-8dda-53aa75b99dfe) ]
+	dispinterface IPE
+	{
+		properties:
+
+		methods:
+	};
+
+	//  Class information for CPEDoc
+
+	[ uuid(0d3b79a5-60e6-4bcc-98aa-897d60c360df) ]
+	coclass PE
+	{
+		[default] dispinterface IPE;
+	};
+};
