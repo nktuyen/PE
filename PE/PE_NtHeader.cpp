@@ -21,6 +21,25 @@ PE_NtHeader::PE_NtHeader(LPCVOID pNtHdr)
 
 PE_NtHeader::~PE_NtHeader()
 {
+	if (nullptr != m_pFileHeader)
+	{
+		if (nullptr != m_pOptionHeader)
+		{
+			switch (m_pFileHeader->Machine())
+			{
+			case IMAGE_FILE_MACHINE_AMD64:
+				delete (PE_OptionHeader64*)m_pOptionHeader;
+			default:
+				delete (PE_OptionHeader32*)m_pOptionHeader;
+				break;
+			}
+
+			m_pOptionHeader = nullptr;
+		}
+
+		delete m_pFileHeader;
+		m_pFileHeader = nullptr;
+	}
 }
 
 void PE_NtHeader::Present(HWND hTreeCtrl, HTREEITEM hParentNode, PE_PresentOptions* opt)

@@ -10,12 +10,15 @@ private:
 	PE_DataDirectory*	m_pDataDirectories[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];
 	static std::map<DWORD, CString>	m_mapOptMagic;
 	static std::map<DWORD, CString>	m_mapOptSubsystem;
+	static std::map<DWORD, CString>	m_mapOptDirEntries;
 protected:
 	PE_OptionHeader( BOOL bIsX64 = FALSE);
 	virtual ~PE_OptionHeader();
 	void Initialize(LPCVOID pOptHdr = nullptr);
+	void Finalize();
 	static CString	OptionMagicName_Get(DWORD dwID);
 	static CString	OptionSubsystemName_Get(DWORD dwID);
+	static CString	OptionDirectoryName_Get(DWORD dwID);
 public:
 	virtual WORD        Magic() = 0;
 	virtual BYTE        MajorLinkerVersion() = 0;

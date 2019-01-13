@@ -17,4 +17,5 @@ PE_OptionHeader32::PE_OptionHeader32(IMAGE_OPTIONAL_HEADER32* pOptHdr)
 
 PE_OptionHeader32::~PE_OptionHeader32()
 {
+	__super::Finalize();
 }

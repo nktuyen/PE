@@ -17,4 +17,5 @@ PE_OptionHeader64::PE_OptionHeader64(IMAGE_OPTIONAL_HEADER64* pOptHdr)
 
 PE_OptionHeader64::~PE_OptionHeader64()
 {
+	__super::Finalize();
 }
